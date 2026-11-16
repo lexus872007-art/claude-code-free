@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (c) 2026 Алексей Гаврилов (Aleksei Gavrilov)
+# Запускается уже под учёткой aiagent с чистым окружением (см. /usr/local/bin/agent). Токен читается здесь,
+# поэтому он не попадает в список процессов (ps) в аргументах.
+set -euo pipefail
+OPT=/opt/free-agent
+PORT="$("$OPT/node/bin/node" -e 'try{console.log(JSON.parse(require("fs").readFileSync("/etc/free-agent/config.json","utf8")).port||8787)}catch{console.log(8787)}')"
+export PATH="$OPT/claude/bin:$OPT/node/bin:/usr/local/bin:/usr/bin:/bin"
+export ANTHROPIC_BASE_URL="http://127.0.0.1:${PORT}"
+export ANTHROPIC_AUTH_TOKEN="$(cat /etc/free-agent/token)"
+export DISABLE_TELEMETRY=1 DISABLE_ERROR_REPORTING=1 DISABLE_AUTOUPDATER=1
+export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 API_TIMEOUT_MS=600000
+mkdir -p "$HOME/work"; cd "$HOME/work"
+exec claude "$@"

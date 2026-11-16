@@ -1,0 +1,22 @@
+Claude Code бесплатно на своём сервере (free-agent)
+Copyright (c) 2026 Алексей Гаврилов (Aleksei Gavrilov)
+https://ty-biznesmen.ru/
+
+Эта программа - свободное ПО: её можно распространять и изменять на условиях
+GNU General Public License версии 3 или (на ваш выбор) любой более поздней версии,
+опубликованной Free Software Foundation. Программа распространяется без каких-либо
+гарантий. Полный текст лицензии - в файле LICENSE.
+
+This program is free software: you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software Foundation,
+either version 3 of the License, or (at your option) any later version. It is
+distributed WITHOUT ANY WARRANTY. See the LICENSE file for the full text.
+
+Благодарность / Acknowledgement: идея маршрутизации бесплатных лимитов провайдеров -
+FreeLLMAPI (https://github.com/tashfeenahmed/freellmapi, Copyright (c) 2026 Tashfeen
+Ahmed, лицензия MIT). Код из FreeLLMAPI сюда не копировался: заимствована идея,
+код в этом репозитории написан заново.
+The routing idea comes from FreeLLMAPI (MIT); no code from it is included here.
+
+Claude Code - программа Anthropic; установщик ставит её официальным пакетом из npm
+на условиях Anthropic. Этот проект не связан с Anthropic.

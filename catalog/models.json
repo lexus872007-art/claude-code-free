@@ -1,0 +1,245 @@
+{
+ "version": "2026.11.14",
+ "comment": "Свой каталог. Порядок = приоритет (сильные для кода выше). Имена моделей меняются - мастер сверяет их со списком провайдера по вашему ключу и пропускает отсутствующие.",
+ "providers": {
+  "nvidia": {
+   "name": "NVIDIA build.nvidia.com",
+   "base": "https://integrate.api.nvidia.com/v1",
+   "signup": "https://build.nvidia.com/",
+   "keypage": "https://build.nvidia.com/settings/api-keys",
+   "needs": "почта и телефон (код по SMS)",
+   "limits": "около 40 запросов в минуту, без суточного лимита",
+   "trains": false,
+   "key_hint": "ключ начинается с nvapi-"
+  },
+  "openrouter": {
+   "name": "OpenRouter",
+   "base": "https://openrouter.ai/api/v1",
+   "signup": "https://openrouter.ai/",
+   "keypage": "https://openrouter.ai/keys",
+   "needs": "только почта",
+   "limits": "модели с пометкой :free - 50 запросов в день (1000, если один раз пополнить счёт на 10 долларов)",
+   "trains": true,
+   "key_hint": "ключ начинается с sk-or-"
+  },
+  "groq": {
+   "name": "Groq",
+   "base": "https://api.groq.com/openai/v1",
+   "signup": "https://console.groq.com/",
+   "keypage": "https://console.groq.com/keys",
+   "needs": "только почта",
+   "limits": "щедро в минуту, суточные лимиты на модель",
+   "trains": false,
+   "key_hint": "ключ начинается с gsk_"
+  },
+  "cerebras": {
+   "name": "Cerebras",
+   "base": "https://api.cerebras.ai/v1",
+   "signup": "https://cloud.cerebras.ai/",
+   "keypage": "https://cloud.cerebras.ai/platform/",
+   "needs": "только почта (на странице платформы раздел API Keys)",
+   "limits": "бесплатный уровень, очень быстрый, суточный лимит токенов",
+   "trains": false,
+   "key_hint": "ключ начинается с csk-"
+  },
+  "mistral": {
+   "name": "Mistral (La Plateforme)",
+   "base": "https://api.mistral.ai/v1",
+   "signup": "https://console.mistral.ai/",
+   "keypage": "https://console.mistral.ai/api-keys",
+   "needs": "почта и телефон; выбрать бесплатный тариф Experiment",
+   "limits": "мало запросов в минуту, большой месячный лимит токенов",
+   "trains": true,
+   "shortToolIds": true,
+   "key_hint": ""
+  },
+  "google": {
+   "name": "Google AI Studio (Gemini)",
+   "base": "https://generativelanguage.googleapis.com/v1beta/openai",
+   "signup": "https://aistudio.google.com/",
+   "keypage": "https://aistudio.google.com/apikey",
+   "needs": "аккаунт Google; из России бесплатный доступ может не работать (регион)",
+   "limits": "суточные лимиты на модель",
+   "trains": true,
+   "key_hint": "ключ начинается с AIza"
+  }
+ },
+ "models": [
+  {
+   "provider": "nvidia",
+   "id": "moonshotai/kimi-k2.6",
+   "ctx": 256000,
+   "max_out": 16384,
+   "tools": true,
+   "note": "сильная для кода"
+  },
+  {
+   "provider": "cerebras",
+   "id": "qwen-3-coder-480b",
+   "ctx": 131000,
+   "max_out": 16384,
+   "tools": true,
+   "note": "код, очень быстро (имя проверяется ключом)"
+  },
+  {
+   "provider": "nvidia",
+   "id": "deepseek-ai/deepseek-v4.1-flash",
+   "ctx": 128000,
+   "max_out": 16384,
+   "tools": true,
+   "fast": true
+  },
+  {
+   "provider": "openrouter",
+   "id": "cohere/north-mini-code:free",
+   "ctx": 256000,
+   "max_out": 16384,
+   "tools": true,
+   "note": "модель для кода"
+  },
+  {
+   "provider": "nvidia",
+   "id": "z-ai/glm-5.3-flash",
+   "ctx": 128000,
+   "max_out": 16384,
+   "tools": true,
+   "fast": true
+  },
+  {
+   "provider": "nvidia",
+   "id": "minimaxai/minimax-m3.1-flash",
+   "ctx": 128000,
+   "max_out": 16384,
+   "tools": true,
+   "fast": true
+  },
+  {
+   "provider": "nvidia",
+   "id": "nvidia/nemotron-3-ultra-550b-a55b",
+   "ctx": 256000,
+   "max_out": 16384,
+   "tools": true
+  },
+  {
+   "provider": "groq",
+   "id": "moonshotai/kimi-k2-instruct",
+   "ctx": 131000,
+   "max_out": 8192,
+   "tools": true
+  },
+  {
+   "provider": "groq",
+   "id": "openai/gpt-oss-120b",
+   "ctx": 131000,
+   "max_out": 8192,
+   "tools": true,
+   "fast": true
+  },
+  {
+   "provider": "cerebras",
+   "id": "gpt-oss-120b",
+   "ctx": 131000,
+   "max_out": 8192,
+   "tools": true,
+   "fast": true
+  },
+  {
+   "provider": "mistral",
+   "id": "codestral-latest",
+   "ctx": 256000,
+   "max_out": 8192,
+   "tools": true,
+   "note": "код"
+  },
+  {
+   "provider": "mistral",
+   "id": "devstral-latest",
+   "ctx": 128000,
+   "max_out": 8192,
+   "tools": true,
+   "note": "код, агентные задачи"
+  },
+  {
+   "provider": "google",
+   "id": "gemini-2.5-flash",
+   "ctx": 1000000,
+   "max_out": 16384,
+   "tools": true,
+   "vision": true,
+   "fast": true
+  },
+  {
+   "provider": "openrouter",
+   "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
+   "ctx": 1000000,
+   "max_out": 16384,
+   "tools": true
+  },
+  {
+   "provider": "nvidia",
+   "id": "mistralai/mistral-large-4-1t-a52b",
+   "ctx": 128000,
+   "max_out": 8192,
+   "tools": true
+  },
+  {
+   "provider": "nvidia",
+   "id": "nvidia/nemotron-3-super-120b-a12b",
+   "ctx": 128000,
+   "max_out": 8192,
+   "tools": true
+  },
+  {
+   "provider": "openrouter",
+   "id": "inclusionai/ling-3.2-flash:free",
+   "ctx": 262000,
+   "max_out": 8192,
+   "tools": true,
+   "fast": true
+  },
+  {
+   "provider": "openrouter",
+   "id": "google/gemma-4-31b-it:free",
+   "ctx": 262000,
+   "max_out": 8192,
+   "tools": true,
+   "vision": true
+  },
+  {
+   "provider": "groq",
+   "id": "qwen/qwen3-32b",
+   "ctx": 131000,
+   "max_out": 8192,
+   "tools": true
+  },
+  {
+   "provider": "mistral",
+   "id": "mistral-large-latest",
+   "ctx": 128000,
+   "max_out": 8192,
+   "tools": true
+  },
+  {
+   "provider": "groq",
+   "id": "llama-3.3-70b-versatile",
+   "ctx": 131000,
+   "max_out": 8192,
+   "tools": true
+  },
+  {
+   "provider": "cerebras",
+   "id": "llama-3.3-70b",
+   "ctx": 65000,
+   "max_out": 8192,
+   "tools": true
+  },
+  {
+   "provider": "google",
+   "id": "gemini-2.5-pro",
+   "ctx": 1000000,
+   "max_out": 16384,
+   "tools": true,
+   "vision": true
+  }
+ ]
+}

@@ -1,0 +1,9 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (c) 2026 Алексей Гаврилов (Aleksei Gavrilov)
+# Чистая Ubuntu 24.04 с systemd и sshd - как свежий VPS
+FROM ubuntu:24.04
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update -qq && apt-get install -y -qq systemd systemd-sysv openssh-server iproute2 curl ca-certificates sudo >/dev/null \
+ && systemctl enable ssh >/dev/null 2>&1; mkdir -p /run/sshd
+STOPSIGNAL SIGRTMIN+3
+CMD ["/sbin/init"]
