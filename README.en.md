@@ -29,9 +29,12 @@ Useful links:
 
 Open the server terminal (the hosting web console or your usual SSH session) and paste one command:
 
-```
-curl -fsSL https://ty-biznesmen.ru/apps/claude-code-free/install.sh | sudo bash
-```
+> [!WARNING]
+> **Install command - copy it in full**
+>
+> ```
+> curl -fsSL https://ty-biznesmen.ru/apps/claude-code-free/install.sh | sudo bash
+> ```
 
 The script is readable - you can download and inspect it first. All versions are pinned. Node.js and the project package are checked against SHA-256 sums; Claude Code is installed from the official npm package of a fixed version. Running it again is safe: it updates what is needed and keeps your keys.
 
